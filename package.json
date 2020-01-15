@@ -1,5 +1,5 @@
 {
-  "name": "react-native-maps",
+  "name": "@emanon_/react-native-maps",
   "description": "React Native Mapview component for iOS + Android",
   "main": "index.js",
   "author": "Leland Richardson <leland.m.richardson@gmail.com>",
