@@ -3,6 +3,7 @@ package com.airbnb.android.react.maps;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
@@ -278,11 +279,15 @@ public class AirMapMarkerManager extends ViewGroupManager<AirMapMarker> {
   @Override
   public void addView(AirMapMarker parent, View child, int index) {
     // add callout to parent ,otherwise image can not show
+    ViewGroup annotationParent = (ViewGroup)child.getParent();
+    if (annotationParent != null) {
+      annotationParent.removeView(child);
+    }
+
     super.addView(parent, child, index);
     if (child instanceof AirMapCallout) {
       parent.setCalloutView((AirMapCallout) child);
     } else {
-      super.addView(parent, child, index);
       parent.update(true);
     }
   }
